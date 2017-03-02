@@ -15,16 +15,18 @@ print(my_list)
 import random
 sort_me = [655, 722, 736, 314, 59, 778, 632, 477, 230, 556, 353, 769, 622, 731, 683, 233, 524, 186, 694, 507, 443, 833, 270, 373, 567, 775, 34]
 
-for pos in range(len(sort_me)):
-    min_pos = pos
-    for sort_pos in range(min_pos, len(sort_me)):
-        if sort_me[sort_pos] < sort_me[min_pos]:
-            min_pos = sort_pos
-    temp = sort_me[pos]
-    sort_me[pos] = sort_me[min_pos]
-    sort_me[min_pos] = temp
-print(sort_me)
+def selection_sort(my_list):
+    for pos in range(len(my_list)) :
+        min_pos = pos
+        for scan_pos in range(min_pos, len(my_list)):
+            if my_list[scan_pos] < my_list[min_pos]:
+                min_pos = scan_pos
+        temp = my_list[pos]
+        my_list[pos] = my_list[min_pos]
+        my_list[min_pos] = temp
 
+    return my_list
+print(selection_sort(sort_me))
 
 # Problem 3 - Insertion Sort (8 pts)
 # Make an insertion sort FUNCTION which takes in 1 parameter (the list),
@@ -32,16 +34,19 @@ print(sort_me)
 # of the following list.
 sort_me2 = [551, 138, 802, 954, 569, 372, 454, 366, 936, 959, 958, 202, 474, 658, 108, 424, 523, 611, 557, 0, 733, 903, 788, 850, 11, 12, 975]
 
-for pos in range(1, len(sort_me2)):
-    key_pos = pos
-    scan_pos = key_pos -1
-    key_val = sort_me2[key_pos]
-    while scan_pos >= 0 and sort_me2[scan_pos] > key_val:
-        sort_me2[scan_pos +1] = sort_me2[scan_pos]
-        scan_pos -= 1
-        sort_me2[scan_pos + 1] = key_val
+def insertion_sort(my_list):
+    for pos in range(1, len(my_list)):
+        key_pos = pos
+        scan_pos = key_pos -1
+        key_val = my_list[key_pos]
+        while scan_pos >= 0 and my_list[scan_pos] > key_val:
+            my_list[scan_pos +1] = my_list[scan_pos]
+            scan_pos -= 1
+        my_list[scan_pos + 1] = key_val
+    return my_list
+print(insertion_sort(sort_me2))
 
-print(sort_me2)
+
 
 
 # Problem 4 - Efficiency? (10 pts)
@@ -50,5 +55,34 @@ print(sort_me2)
 # Make the functions print each value.  Run the sorts on the list below.
 
 sort_me3 = [77, 29, 59, 69, 86, 40, 47, 40, 74, 44, 58, 78, 9, 8, 13, 99, 3, 57, 19, 48, 55, 50, 94, 69, 98, 30, 37, 29, 40, 29, 36, 32, 26, 85, 61, 51, 70, 96, 90, 89, 91, 88, 68, 4, 4, 74, 15, 72, 5, 91, 76, 6, 56, 80, 72, 87, 63, 86, 48, 24, 17, 23, 30, 41, 7, 64, 16, 19, 40, 63, 14, 95, 44, 58, 1, 6, 45, 55, 52, 54, 44, 36, 50, 6, 96, 66, 8, 46, 48, 48, 75, 25, 39, 30, 70, 44, 38, 90, 49, 70]
+
+def selection_sort(my_list):
+    for pos in range(len(my_list)):
+        min_pos = pos
+        for scan_pos in range(min_pos, len(my_list)):
+            if my_list[scan_pos] < my_list[min_pos]:
+                min_pos = scan_pos
+        temp = my_list[pos]
+        my_list[pos] = my_list[min_pos]
+        my_list[min_pos] = temp
+
+    return my_list
+
+def insertion_sort(my_list):
+    for pos in range(1, len(my_list)):
+        key_pos = pos
+        scan_pos = key_pos -1
+        key_val = my_list[key_pos]
+        while scan_pos >= 0 and my_list[scan_pos] > key_val:
+            my_list[scan_pos +1] = my_list[scan_pos]
+            scan_pos -= 1
+        my_list[scan_pos + 1] = key_val
+    return my_list
+
+
+
+print(insertion_sort(sort_me2))
+
+print(selection_sort(sort_me))
 
 
